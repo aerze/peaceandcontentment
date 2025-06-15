@@ -36,10 +36,12 @@ var debugActive = false;
 
 app.get("/debug/true", (req, res) => {
   debugActive = true;
+  res.json(debugActive);
 });
 
 app.get("/debug/false", (req, res) => {
   debugActive = false;
+  res.json(debugActive);
 });
 
 const server = http.createServer(app);
