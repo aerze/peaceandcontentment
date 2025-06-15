@@ -84,7 +84,7 @@ function auto() {
   }, 1000);
 }
 
-// auto();
+auto();
 
 function getThingie(list) {
   const index = Math.floor(Math.random() * list.length);
