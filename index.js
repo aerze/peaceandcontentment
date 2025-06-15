@@ -21,12 +21,25 @@ app.use(cookieParser());
 
 app.use(express.static("./public"));
 
-app.use("/send", (req, res) => {
+app.post("/send", (req, res) => {
   const name = req.body?.name;
   const text = req.body?.text;
   console.log(">> POST", name, text);
+
+  if (!name || !text) return;
+
   messages.emit("m", [name, text]);
   res.redirect("/");
+});
+
+var debugActive = false;
+
+app.get("/debug/true", (req, res) => {
+  debugActive = true;
+});
+
+app.get("/debug/false", (req, res) => {
+  debugActive = false;
 });
 
 const server = http.createServer(app);
@@ -79,7 +92,9 @@ console.log(server.address());
 
 function auto() {
   setTimeout(function () {
-    messages.emit("m", [getThingie(peeps), getThingie(compliments)]);
+    if (debugActive) {
+      messages.emit("m", [getThingie(peeps), getThingie(compliments)]);
+    }
     auto();
   }, 1000);
 }

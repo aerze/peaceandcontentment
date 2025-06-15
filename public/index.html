@@ -4,32 +4,76 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        background-color: #222034;
+        color: white;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      h1 {
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 60px;
+        margin-bottom: 0px;
+      }
+
+      h2 {
+        font-family: monospace;
+        font-size: 30px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+      }
+
+      h3 {
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 1.6em;
+        margin-bottom: 0px;
+      }
+
+      input {
+        font-size: 1.2em;
+        height: 28px;
+      }
+
+      button {
+        margin-top: 1em;
+        font-size: 1.2em;
+        padding: .2em .5em;
+      }
+    </style>
   </head>
   <body>
-    <h3 style="margin-bottom: 20px">LCOLONQ WISH MACHINE</h3>
-
+    <h1>WELL OF WISHES</h3>
+    <h2>LCOLONQ WELL WISHING MACHINE</h2>
     <form id="form" method="post" action="/send">
       <label>
-        Name
-        <input name="name" type="text" />
+        <h3>name</h3>
+        <input name="name" type="text" placeholder="computer" />
       </label>
-
       <label>
-        Message
-        <input name="text" type="text" />
+        <h3>message</h3>
+        <input name="text" type="text" placeholder="Happy Birthday!!~" />
       </label>
-
-      <button type="submit">Send</button>
+      <button type="submit">Send (or press enter)</button>
     </form>
-
-    <!-- <script>
-      const form = document.getElementById("form");
-      form.addEventListener("submit", (event) => {
-        event.preventDefault();
-        const f = new FormData(form);
-        const data = Object.fromEntries(f.entries());
-        console.log(data);
-      });
-    </script> -->
+    <script>
+      const input = document.getElementsByTagName('input');
+      input[0].focus();
+    </script>
   </body>
 </html>
